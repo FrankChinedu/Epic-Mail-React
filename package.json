@@ -8,8 +8,7 @@
 		"drop-db-tables": "babel-node server/model/index dropAllTables ",
 		"create-db-tables": "babel-node server/model/index createAllTables ",
 		"run-tables": "npm run drop-db-tables && npm run create-db-tables",
-		"custom-test":
-			"NODE_ENV=test npm run run-tables && NODE_ENV=test mocha --timeout 100000 --require @babel/register server/test/*.js --exit || true",
+		"custom-test": "NODE_ENV=test npm run run-tables && NODE_ENV=test mocha --timeout 100000 --require @babel/register server/test/*.js --exit || true",
 		"test": "mocha --timeout 100000 --require @babel/register server/test/*.js --exit || true",
 		"build": "babel server --copy-files --out-dir dist",
 		"serve": "node dist/app.js",
@@ -17,24 +16,30 @@
 		"lint": "eslint server/ --fix",
 		"generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
 		"coveralls-coverage": "coveralls < lcov.info",
-		"codeclimate-coverage":
-			"CODECLIMATE_REPO_TOKEN=bccec37b7f6f09497c77a0fab52c8218278a4da36076a333e77a8851ff2819f9 codeclimate-test-reporter < lcov.info",
+		"codeclimate-coverage": "CODECLIMATE_REPO_TOKEN=bccec37b7f6f09497c77a0fab52c8218278a4da36076a333e77a8851ff2819f9 codeclimate-test-reporter < lcov.info",
 		"report-html": "nyc npm run custom-test && nyc report --reporter=html --reporter=lcov",
 		"coverage": "nyc npm run custom-test && npm run generate-lcov && npm run codeclimate-coverage",
 		"webpack": "webpack",
-		"build:client": "webpack --mode=production"
+		"build:client": "webpack --mode=production",
+		"client:test": "jest ./client --detectOpenHandles --verbose"
 	},
 	"engines": {
 		"node": "10.10.0"
 	},
 	"nyc": {
-		"exclude": ["**/*.test.js", "server/model/*"]
+		"exclude": [
+			"**/*.test.js",
+			"server/model/*"
+		]
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/FrankChinedu/Epic-Mail-React.git"
 	},
-	"keywords": ["email", "message"],
+	"keywords": [
+		"email",
+		"message"
+	],
 	"author": "obi chinedu frank <frankieetchy@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -48,6 +53,8 @@
 		"dotenv": "6.2.0",
 		"dotenv-webpack": "^1.7.0",
 		"express": "4.16.4",
+		"enzyme": "^3.10.0",
+		"enzyme-adapter-react-16": "^1.14.0",
 		"joi": "14.3.1",
 		"jsonwebtoken": "8.5.0",
 		"morgan": "1.9.1",
@@ -76,13 +83,16 @@
 		"codeclimate-test-reporter": "0.5.1",
 		"coveralls": "3.0.2",
 		"css-loader": "^3.1.0",
+		"enzyme-to-json": "^3.3.5",
 		"eslint": "5.15.0",
 		"eslint-config-airbnb-base": "13.1.0",
 		"eslint-plugin-import": "2.16.0",
+		"eslint-plugin-react": "^7.14.3",
 		"file-loader": "^4.1.0",
 		"html-webpack-plugin": "^3.2.0",
 		"istanbul": "1.1.0-alpha.1",
 		"istanbul-coveralls": "1.0.3",
+		"jest": "^24.8.0",
 		"make-runnable": "1.3.6",
 		"mini-css-extract-plugin": "^0.8.0",
 		"mocha": "^6.2.0",

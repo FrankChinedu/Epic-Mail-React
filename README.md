@@ -1,5 +1,5 @@
 # Epic_Mail
-[![Maintainability](https://api.codeclimate.com/v1/badges/56980b872fa36569a90e/maintainability)](https://codeclimate.com/github/FrankChinedu/Epic-Mail-React/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/56980b872fa36569a90e/test_coverage)](https://codeclimate.com/github/FrankChinedu/Epic-Mail-React/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/FrankChinedu/Epic-Mail-React/badge.svg?branch=develop)](https://coveralls.io/github/FrankChinedu/Epic-Mail-React?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/56980b872fa36569a90e/maintainability)](https://codeclimate.com/github/FrankChinedu/Epic-Mail-React/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/56980b872fa36569a90e/test_coverage)](https://codeclimate.com/github/FrankChinedu/Epic-Mail-React/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/FrankChinedu/Epic-Mail-React/badge.svg?branch=develop)](https://coveralls.io/github/FrankChinedu/Epic-Mail-React?branch=develop) [![Build Status](https://travis-ci.com/FrankChinedu/Epic-Mail-React.svg?branch=develop)](https://travis-ci.com/FrankChinedu/Epic-Mail-React)
 
 Epic mail is a web app that helps people exchange
 messages/information over the internet.
