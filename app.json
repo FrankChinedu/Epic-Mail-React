@@ -1,0 +1,22 @@
+{
+	"name": "Epic mail",
+	"description": "app for sending and receiving emails",
+	"env": {
+		"DATABASE_URL": {
+			"required": true
+		},
+		"JWT_SECRET": {
+			"required": true
+		},
+		"NODE_ENV": "review"
+	},
+	"addons": [
+		{
+			"plan": "heroku-postgresql",
+			"as": "DATABASE_URL",
+			"options": {
+				"version": "9.5"
+			}
+		}
+	]
+}

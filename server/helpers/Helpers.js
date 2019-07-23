@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export default class Helpers {
   static hashPassword(password) {
@@ -15,7 +15,6 @@ export default class Helpers {
     const result = await bcrypt.compare(password, userHashpassword);
     return result;
   }
-
 
   // copied from https://codeburst.io/javascript-async-await-with-foreach-b6ba62bbf404
   static async asyncForEach(array, callback) {
