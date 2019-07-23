@@ -11,9 +11,9 @@
 		"custom-test":
 			"NODE_ENV=test npm run run-tables && NODE_ENV=test mocha --timeout 100000 --require @babel/register server/test/*.js --exit || true",
 		"test": "mocha --timeout 100000 --require @babel/register server/test/*.js --exit || true",
-		"build": "babel server --out-dir dist",
+		"build": "babel server --copy-files --out-dir dist",
 		"serve": "node dist/app.js",
-		"heroku-postbuild": "npm install",
+		"heroku-postbuild": "npm run build:client && npm run build",
 		"lint": "eslint server/ --fix",
 		"generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
 		"coveralls-coverage": "coveralls < lcov.info",
@@ -22,7 +22,7 @@
 		"report-html": "nyc npm run custom-test && nyc report --reporter=html --reporter=lcov",
 		"coverage": "nyc npm run custom-test && npm run generate-lcov && npm run codeclimate-coverage",
 		"webpack": "webpack",
-		"build:client": "webpack"
+		"build:client": "webpack --mode=production"
 	},
 	"engines": {
 		"node": "10.10.0"

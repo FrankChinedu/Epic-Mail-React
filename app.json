@@ -2,7 +2,7 @@
 	"name": "Epic mail",
 	"description": "app for sending and receiving emails",
 	"env": {
-		"DATABASE_URL": {
+		"DEV_DB": {
 			"required": true
 		},
 		"JWT_SECRET": {
