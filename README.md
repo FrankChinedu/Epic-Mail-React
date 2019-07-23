@@ -1,8 +1,5 @@
 # Epic_Mail
-
-[![Build Status](https://travis-ci.com/FrankChinedu/Epic_Mail.svg?branch=develop)](https://travis-ci.com/FrankChinedu/Epic_Mail) [![Maintainability](https://api.codeclimate.com/v1/badges/a8a3d82521d45a6701e7/maintainability)](https://codeclimate.com/github/FrankChinedu/Epic_Mail/maintainability)   [![Test Coverage](https://api.codeclimate.com/v1/badges/a8a3d82521d45a6701e7/test_coverage)](https://codeclimate.com/github/FrankChinedu/Epic_Mail/test_coverage)  [![Coverage Status](https://coveralls.io/repos/github/FrankChinedu/Epic_Mail/badge.svg?branch=develop)](https://coveralls.io/github/FrankChinedu/Epic_Mail?branch=develop)
-
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/56980b872fa36569a90e/maintainability)](https://codeclimate.com/github/FrankChinedu/Epic-Mail-React/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/56980b872fa36569a90e/test_coverage)](https://codeclimate.com/github/FrankChinedu/Epic-Mail-React/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/FrankChinedu/Epic-Mail-React/badge.svg?branch=develop)](https://coveralls.io/github/FrankChinedu/Epic-Mail-React?branch=develop)
 
 Epic mail is a web app that helps people exchange
 messages/information over the internet.
@@ -12,6 +9,7 @@ messages/information over the internet.
  - Css
  - Javascript
  - Nodejs
+ - React
 
 ## Feature
 - Guest can create an account
