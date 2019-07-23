@@ -1,18 +1,35 @@
 /* eslint-disable import/no-dynamic-require */
 import 'dotenv/config';
-import '@babel/polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
+import Webpack from 'webpack';
+import WebpackDevMiddleware from 'webpack-dev-middleware';
+import WebpackHotMiddleware from 'webpack-hot-middleware';
 import YAML from 'yamljs';
-import routes from './routes/api';
+import path from 'path';
+import webpackConfig from '../webpack.config';
+import Route from './routes/index';
 
 const swaggerDocument = YAML.load(`${__dirname}/../swagger.yaml`);
 
 const app = express();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+if (process.env.NODE_ENV === 'development') {
+  const compiler = Webpack(webpackConfig);
+
+  app.use(
+    WebpackDevMiddleware(compiler, {
+      hot: true,
+      publicPath: webpackConfig.output.publicPath,
+    }),
+  );
+
+  app.use(WebpackHotMiddleware(compiler));
+}
 
 app.use(
   cors({
@@ -37,25 +54,15 @@ app.use(cors());
 const apiURL = '/api/v1';
 global.apiURL = apiURL;
 
-app.use('/', (req, res, next) => {
-  if (req.originalUrl !== '/') {
-    next();
-    return;
-  }
-  /* istanbul ignore next */
-  res.send({
-    message: 'welcome to EPIC MAIL',
-  });
-});
+Route(app);
 
-Object.keys(routes).forEach((key) => {
-  const value = routes[key];
-  app.use(`${apiURL}/`, value);
-});
+app.use(express.static(path.resolve(__dirname, 'public')));
+
+app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public/index.html')));
 
 /* istanbul ignore next */
 app.use((req, res) => {
-/* istanbul ignore next */
+  /* istanbul ignore next */
   res.status(404);
   /* istanbul ignore next */
   res.send({
@@ -64,9 +71,9 @@ app.use((req, res) => {
 });
 
 if (!module.parent) {
-/* istanbul ignore next */
-  app.listen(process.env.PORT, () => {
   /* istanbul ignore next */
+  app.listen(process.env.PORT, () => {
+    /* istanbul ignore next */
     console.log(`server start at port ${process.env.PORT} `);
   });
 }
