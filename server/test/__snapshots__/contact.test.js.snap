@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contacts  /Post auth/login should log a user in 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[`Contacts  Contacts   should add a user to be a contact 1`] = `
+Array [
+  "id",
+  "firstname",
+  "lastname",
+  "email",
+  "contact_owner_id",
+  "avatar",
+  "createdat",
+  "updatedat",
+]
+`;
+
+exports[`Contacts  Contacts   should delete a user's contact  1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+]
+`;
+
+exports[`Contacts  Contacts   should get all users contacts 1`] = `
+Array [
+  "0",
+]
+`;
+
+exports[`Contacts  Contacts   should not add user if user is already a contact  1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "29",
+]
+`;
+
+exports[`Contacts  Contacts   should return 404 if user is already deleted or does not exist  1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+]
+`;
+
+exports[`Contacts  sign up should create an account for a new user 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[`Contacts  sign up should create an account for a new user 2`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;

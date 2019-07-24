@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Groups  /Post auth/login should create an account for a new user 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[`Groups  /Post auth/login should log a user in 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[`Groups  Groups  should add users to a particular group 1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "29",
+  "30",
+  "31",
+  "32",
+  "33",
+  "34",
+  "35",
+  "36",
+  "37",
+  "38",
+  "39",
+  "40",
+  "41",
+  "42",
+  "43",
+  "44",
+  "45",
+  "46",
+  "47",
+  "48",
+  "49",
+  "50",
+  "51",
+  "52",
+  "53",
+]
+`;
+
+exports[`Groups  Groups  should create a group 1`] = `
+Array [
+  "id",
+  "name",
+  "role",
+  "ownerid",
+  "createdat",
+  "updatedat",
+]
+`;
+
+exports[`Groups  Groups  should delete a memeber from your group 1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+]
+`;
+
+exports[`Groups  Groups  should delete a users group that they own 1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+]
+`;
+
+exports[`Groups  Groups  should get all users groups 1`] = `
+Array [
+  "0",
+]
+`;
+
+exports[`Groups  Groups  should return 404 if not found group 1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+]
+`;
+
+exports[`Groups  Groups  should send a bulk message to all the members in the group 1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "11",
+]
+`;
+
+exports[`Groups  Groups  should update a groups name 1`] = `
+Array [
+  "0",
+]
+`;

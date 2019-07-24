@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message  /DELETE /messages/:id user should be able to delete a message from there inbox 1`] = `
+Array [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+]
+`;
+
+exports[`Message  /GET /messages user should be able to get all received emails as inbox 1`] = `Array []`;
+
+exports[`Message  /GET /messages/:id user should be able to get a specific user email from the inbox 1`] = `Array []`;
+
+exports[`Message  /GET /messages/sent user should be able to get all sent messages  1`] = `Array []`;
+
+exports[`Message  /GET /messages/sent/:id user should be able to get a specific user email from sent messages 1`] = `Array []`;
+
+exports[`Message  /GET /messages/unread user should be able to get all unread messages 1`] = `Array []`;
+
+exports[`Message  /Post /messages user should be able to create or send email 1`] = `
+Array [
+  "id",
+  "createdOn",
+  "subject",
+  "message",
+  "parentMessageId",
+  "status",
+]
+`;
+
+exports[`Message  /Post auth/login should create an account for a new user 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[`Message  /Post auth/login should log a user in 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;

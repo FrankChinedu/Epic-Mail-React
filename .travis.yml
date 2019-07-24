@@ -8,9 +8,6 @@ cache:
 services:
   - postgresql
 
-before_script:
-  - npm run coverage
-
 addons:
   code_climate:
     repo_token:

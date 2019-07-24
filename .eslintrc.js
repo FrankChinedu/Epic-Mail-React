@@ -6,7 +6,8 @@ module.exports = {
 		commonjs: true,
 		node: true,
 		mocha: true,
-		browser: true
+		browser: true,
+		jest: true
 	},
 	rules: {
 		'one-var': 0,
@@ -36,9 +37,11 @@ module.exports = {
 			'error',
 			{
 				require: {
-					FunctionDeclaration: false,
-					MethodDefinition: true,
-					ClassDeclaration: true
+					FunctionDeclaration: true,
+					MethodDefinition: false,
+					ClassDeclaration: false,
+					ArrowFunctionExpression: false,
+					FunctionExpression: false
 				}
 			}
 		]
