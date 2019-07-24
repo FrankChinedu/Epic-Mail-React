@@ -1,157 +1,112 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../app';
+import supertest from 'supertest';
+import app from '../app';
 
-const should = chai.should();
-
-chai.use(chaiHttp);
+const server = () => supertest(app);
 
 const { apiURL } = global;
 
 describe(' Sign up', () => {
   describe('sign up', () => {
-    it('should create an account for a new user 89', (done) => {
+    it('should create an account for a new user ', async () => {
       const data = {
         firstname: 'frank',
         lastname: 'angelo',
         email: 'fangelo@me.com',
-        password: '12345678',
+        password: '12345678'
       };
-      chai.request(server)
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(201);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(201);
-          done();
-        });
+        .send(data);
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(201);
     });
   });
 
   describe('sign up', () => {
-    it('should create an account for a new user ', (done) => {
+    it('should create an account for a new user ', async () => {
       const data = {
         firstname: 'john',
         lastname: 'doe',
         email: 'johlongn@doe.com',
-        password: '12345678',
+        password: '12345678'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(201);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(201);
-        });
-      done();
+        .send(data);
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(201);
     });
   });
 
   describe('/Post auth/signup', () => {
-    it('should not be able to sign up a new user if password parameter is missing ', (done) => {
+    it('should not be able to sign up a new user if password parameter is missing ', async () => {
       const data = {
         firstname: 'frank',
         lastname: 'angelo',
         email: 'angelo@me.com',
-        password: '',
+        password: ''
       };
-      chai.request(server)
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(400);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
-        });
-      done();
+        .send(data);
+
+      expect(Object.keys(body)).toMatchSnapshot();
+      expect(status).toBe(400);
     });
   });
 
   describe('/Post auth/signup', () => {
-    it('should not be able to sign up a new user if first name parameter is missing', (done) => {
+    it('should not be able to sign up a new user if first name parameter is missing', async () => {
       const data = {
         firstname: '',
         lastname: 'angelo',
         email: 'angelo@me.com',
-        password: '12345678',
+        password: '12345678'
       };
-      chai.request(server)
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(400);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
-        });
-      done();
+        .send(data);
+      expect(Object.keys(body)).toMatchSnapshot();
+      expect(status).toBe(400);
     });
   });
 
   describe('/Post auth/signup', () => {
-    it('should not be able to sign up a new user if no parameter is missing', (done) => {
-      const data = {
-      };
-      chai.request(server)
+    it('should not be able to sign up a new user if no parameter is missing', async () => {
+      const data = {};
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(400);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-        });
-      done();
+        .send(data);
+      expect(Object.keys(body)).toMatchSnapshot();
+      expect(status).toBe(400);
     });
   });
 
   describe('/Post auth/login', () => {
-    it('should log a user in', (done) => {
+    it('should log a user in', async () => {
       const data = {
-        email: 'angelo@me.com',
-        password: '12345678',
+        email: 'fangelo@me.com',
+        password: '12345678'
       };
-      chai.request(server)
+      const { status, body } = await server()
         .post(`${apiURL}/auth/login`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .send(data);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(200);
     });
 
-    it('should not be able to log a user in if wrong parameters are passed', (done) => {
+    it('should not be able to log a user in if wrong parameters are passed', async () => {
       const data = {
         email: 'franki@me.com',
-        password: '123456789',
+        password: '123456789'
       };
-      chai.request(server)
+      const { status, body } = await server()
         .post(`${apiURL}/auth/login`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(400);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('error');
-        });
-      done();
+        .send(data);
+      expect(Object.keys(body)).toMatchSnapshot();
+      expect(status).toBe(400);
     });
   });
 });

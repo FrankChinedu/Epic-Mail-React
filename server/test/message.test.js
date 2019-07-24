@@ -1,10 +1,7 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../app';
+import supertest from 'supertest';
+import app from '../app';
 
-const should = chai.should();
-
-chai.use(chaiHttp);
+const server = () => supertest(app);
 
 let accessToken;
 
@@ -12,179 +9,132 @@ const { apiURL } = global;
 
 describe('Message ', () => {
   describe('/Post auth/login', () => {
-    it('should log a user in', (done) => {
+    it('should create an account for a new user', async () => {
       const data = {
-        email: 'angelo@me.com',
-        password: '12345678',
+        firstname: 'aerrd',
+        lastname: 'angelo',
+        email: 'leap@me.com',
+        password: '12345678'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
+        .post(`${apiURL}/auth/signup`)
+        .send(data);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(201);
+    });
+
+    it('should log a user in', async () => {
+      const data = {
+        email: 'leap@me.com',
+        password: '12345678'
+      };
+
+      const { status, body } = await server()
         .post(`${apiURL}/auth/login`)
-        .send(data)
-        .end((err, res) => {
-          accessToken = res.body.data.token;
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .send(data);
+
+      accessToken = body.data.token;
+      expect(status).toBe(200);
+      expect(Object.keys(body.data)).toMatchSnapshot();
     });
   });
 
   describe('/Post /messages', () => {
-    it('user should be able to create or send email', (done) => {
+    it('user should be able to create or send email', async () => {
       const data = {
         subject: 'awesome subject',
         message: 'thank God i am awesome',
         status: 'draft',
-        contactEmail: 'paul@taru.com',
+        contactEmail: 'paul@taru.com'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/messages`)
         .send(data)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(201);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(201);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(status).toBe(201);
+      expect(Object.keys(body.data)).toMatchSnapshot();
     });
   });
 
   describe('/GET /messages', () => {
-    it('user should be able to get all received emails as inbox', (done) => {
-      chai.request(server)
+    it('user should be able to get all received emails as inbox', async () => {
+      const { status, body } = await server()
         .get(`${apiURL}/messages`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(status).toBe(200);
+      expect(Object.keys(body.data)).toMatchSnapshot();
     });
   });
 
   describe('/GET /messages/unread', () => {
-    it('user should be able to get all unread messages', (done) => {
-      chai.request(server)
+    it('user should be able to get all unread messages', async () => {
+      const { status, body } = await server()
         .get(`${apiURL}/messages/unread`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(status).toBe(200);
+      expect(Object.keys(body.data)).toMatchSnapshot();
     });
   });
 
-
   describe('/GET /messages/:id', () => {
-    it('user should be able to get a specific user email from the inbox', (done) => {
-      chai.request(server)
+    it('user should be able to get a specific user email from the inbox', async () => {
+      const { status, body } = await server()
         .get(`${apiURL}/messages/:id`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          if (res.body.status === 200) {
-            res.should.have.status(200);
-            should.exist(res.body);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status');
-            res.body.should.have.property('data');
-            res.body.status.should.equal(200);
-          } else {
-            res.should.have.status(404);
-            should.exist(res.body);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status');
-            res.body.should.have.property('data');
-            res.body.status.should.equal(404);
-          }
-          done();
-        });
+        .set('x-access-token', accessToken);
+      if (status === 200) {
+        expect(status).toBe(200);
+        expect(Object.keys(body.data)).toMatchSnapshot();
+      } else {
+        expect(status).toBe(404);
+        expect(Object.keys(body.data)).toMatchSnapshot();
+      }
     });
   });
 
   describe('/GET /messages/sent/:id', () => {
-    it('user should be able to get a specific user email from sent messages', (done) => {
-      chai.request(server)
+    it('user should be able to get a specific user email from sent messages', async () => {
+      const { status, body } = await server()
         .get(`${apiURL}/messages/sent/:id`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          if (res.body.status === 200) {
-            res.should.have.status(200);
-            should.exist(res.body);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status');
-            res.body.should.have.property('data');
-            res.body.status.should.equal(200);
-          } else {
-            res.should.have.status(404);
-            should.exist(res.body);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status');
-            res.body.should.have.property('data');
-            res.body.status.should.equal(404);
-          }
-          done();
-        });
+        .set('x-access-token', accessToken);
+      if (status === 200) {
+        expect(status).toBe(200);
+        expect(Object.keys(body.data)).toMatchSnapshot();
+      } else {
+        expect(status).toBe(404);
+        expect(Object.keys(body.data)).toMatchSnapshot();
+      }
     });
   });
 
   describe('/DELETE /messages/:id', () => {
-    it('user should be able to delete a message from there inbox', (done) => {
-      chai.request(server)
+    it('user should be able to delete a message from there inbox', async () => {
+      const { status, body } = await server()
         .delete(`${apiURL}/messages/1`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          if (res.body.status === 202) {
-            res.should.have.status(202);
-            should.exist(res.body);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status');
-            res.body.should.have.property('data');
-            res.body.status.should.equal(202);
-          } else {
-            res.should.have.status(404);
-            should.exist(res.body);
-            res.body.should.be.a('object');
-            res.body.should.have.property('status');
-            res.body.should.have.property('data');
-            res.body.status.should.equal(404);
-          }
-          done(err);
-        });
+        .set('x-access-token', accessToken);
+      if (status === 202) {
+        expect(status).toBe(202);
+        expect(Object.keys(body.data)).toMatchSnapshot();
+      } else {
+        expect(status).toBe(404);
+        expect(Object.keys(body.data)).toMatchSnapshot();
+      }
     });
   });
 
   describe('/GET /messages/sent', () => {
-    it('user should be able to get all sent messages ', (done) => {
-      chai.request(server)
+    it('user should be able to get all sent messages ', async () => {
+      const { status, body } = await server()
         .get(`${apiURL}/messages/sent`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(status).toBe(200);
+      expect(Object.keys(body.data)).toMatchSnapshot();
     });
   });
 });

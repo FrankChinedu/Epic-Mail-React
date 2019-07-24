@@ -1,10 +1,7 @@
-import chai from 'chai';
-import chaiHttp from 'chai-http';
-import server from '../app';
+import supertest from 'supertest';
+import app from '../app';
 
-const should = chai.should();
-
-chai.use(chaiHttp);
+const server = () => supertest(app);
 
 let accessToken;
 
@@ -12,159 +9,109 @@ const { apiURL } = global;
 
 describe('Contacts ', () => {
   describe('sign up', () => {
-    it('should create an account for a new user', (done) => {
+    it('should create an account for a new user', async () => {
       const data = {
         firstname: 'frank',
         lastname: 'angelo',
         email: 'angelo@me.com',
-        password: '12345678',
+        password: '12345678'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(201);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(201);
-          done();
-        });
+        .send(data);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(201);
     });
   });
 
-
   describe('sign up', () => {
-    it('should create an account for a new user', (done) => {
+    it('should create an account for a new user', async () => {
       const data = {
         firstname: 'john',
         lastname: 'doe',
         email: 'john@doe.com',
-        password: '12345678',
+        password: '12345678'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/auth/signup`)
-        .send(data)
-        .end((err, res) => {
-          res.should.have.status(201);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(201);
-        });
-      done();
+        .send(data);
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(201);
     });
   });
 
   describe('/Post auth/login', () => {
-    it('should log a user in', (done) => {
+    it('should log a user in', async () => {
       const data = {
         email: 'angelo@me.com',
-        password: '12345678',
+        password: '12345678'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/auth/login`)
-        .send(data)
-        .end((err, res) => {
-          accessToken = res.body.data.token;
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.data.should.have.property('token');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .send(data);
+      accessToken = body.data.token;
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(200);
     });
   });
 
   describe('Contacts  ', () => {
-    it('should add a user to be a contact', (done) => {
+    it('should add a user to be a contact', async () => {
       const data = {
-        email: 'john@doe.com',
+        email: 'john@doe.com'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/contacts`)
-        .send(data)
         .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(201);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(201);
-          done();
-        });
+        .send(data);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(201);
     });
 
-    it('should not add user if user is already a contact ', (done) => {
+    it('should not add user if user is already a contact ', async () => {
       const data = {
-        email: 'john@doe.com',
+        email: 'john@doe.com'
       };
-      chai.request(server)
+
+      const { status, body } = await server()
         .post(`${apiURL}/contacts`)
-        .send(data)
         .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(400);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(400);
-          done();
-        });
+        .send(data);
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(400);
     });
 
-    it('should get all users contacts', (done) => {
-      chai.request(server)
+    it('should get all users contacts', async () => {
+      const { status, body } = await server()
         .get(`${apiURL}/contacts`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(200);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(200);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(200);
     });
 
-    it('should delete a user\'s contact ', (done) => {
-      chai.request(server)
+    it("should delete a user's contact ", async () => {
+      const { status, body } = await server()
         .delete(`${apiURL}/contacts/1`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(202);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(202);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(202);
     });
 
-    it('should return 404 if user is already deleted or does not exist ', (done) => {
-      chai.request(server)
+    it('should return 404 if user is already deleted or does not exist ', async () => {
+      const { status, body } = await server()
         .delete(`${apiURL}/contacts/1`)
-        .set('x-access-token', accessToken)
-        .end((err, res) => {
-          res.should.have.status(404);
-          should.exist(res.body);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status');
-          res.body.should.have.property('data');
-          res.body.status.should.equal(404);
-          done();
-        });
+        .set('x-access-token', accessToken);
+
+      expect(Object.keys(body.data)).toMatchSnapshot();
+      expect(status).toBe(404);
     });
   });
 });
