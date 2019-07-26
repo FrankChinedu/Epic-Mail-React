@@ -20,7 +20,7 @@
 			"CODECLIMATE_REPO_TOKEN=bccec37b7f6f09497c77a0fab52c8218278a4da36076a333e77a8851ff2819f9 codeclimate-test-reporter < lcov.info",
 		"webpack": "webpack",
 		"build:client": "webpack --mode=production",
-		"client:test": "jest ./client --detectOpenHandles --verbose"
+		"client:test": "jest ./client --detectOpenHandles --verbose --coverage"
 	},
 	"engines": {
 		"node": "10.10.0"
@@ -37,6 +37,7 @@
 	},
 	"homepage": "https://github.com/FrankChinedu/Epic-Mail-React#readme",
 	"dependencies": {
+		"axios": "^0.19.0",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "1.18.3",
 		"cors": "2.8.5",
@@ -45,6 +46,7 @@
 		"enzyme": "^3.10.0",
 		"enzyme-adapter-react-16": "^1.14.0",
 		"express": "4.16.4",
+		"formik": "^1.5.8",
 		"joi": "14.3.1",
 		"jsonwebtoken": "8.5.0",
 		"morgan": "1.9.1",
@@ -53,14 +55,17 @@
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
 		"react-redux": "^7.1.0",
+		"react-router-dom": "^5.0.1",
 		"redux": "^4.0.4",
 		"redux-thunk": "^2.3.0",
+		"redux-devtools-extension": "^2.13.8",
 		"swagger-ui-express": "4.0.2",
 		"webpack": "^4.36.1",
 		"webpack-dev-middleware": "^3.7.0",
 		"webpack-dev-server": "^3.7.2",
 		"webpack-hot-middleware": "^2.25.0",
-		"yamljs": "0.3.0"
+		"yamljs": "0.3.0",
+		"yup": "^0.27.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "7.2.3",

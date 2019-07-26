@@ -10,6 +10,8 @@ module.exports = {
 		jest: true
 	},
 	rules: {
+		'react/prop-types': 'off',
+		'no-tabs': 'off',
 		'one-var': 0,
 		'one-var-declaration-per-line': 0,
 		indent: ['error', 2],
@@ -37,7 +39,7 @@ module.exports = {
 			'error',
 			{
 				require: {
-					FunctionDeclaration: true,
+					FunctionDeclaration: false,
 					MethodDefinition: false,
 					ClassDeclaration: false,
 					ArrowFunctionExpression: false,

@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Main from './index';
+import Home from './index';
 
-describe('mount main', () => {
+describe('Home', () => {
   it('should render correctly in "debug" mode', () => {
-    const component = shallow(<Main debug />);
+    const component = shallow(<Home debug />);
 
     expect(component).toMatchSnapshot();
   });

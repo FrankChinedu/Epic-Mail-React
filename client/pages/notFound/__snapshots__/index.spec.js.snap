@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`404 should render correctly in "debug" mode 1`] = `
+<Fragment>
+  <div>
+    <h1>
+      404
+    </h1>
+  </div>
+</Fragment>
+`;
