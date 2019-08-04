@@ -24,8 +24,8 @@ if (process.env.NODE_ENV === 'development') {
   app.use(
     WebpackDevMiddleware(compiler, {
       hot: true,
-      publicPath: webpackConfig.output.publicPath,
-    }),
+      publicPath: webpackConfig.output.publicPath
+    })
   );
 
   app.use(WebpackHotMiddleware(compiler));
@@ -36,8 +36,8 @@ app.use(
     origin: '*',
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
     preflightContinue: false,
-    optionsSuccessStatus: 204,
-  }),
+    optionsSuccessStatus: 204
+  })
 );
 
 app.all('/*', (req, res, next) => {
@@ -59,16 +59,6 @@ Route(app);
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public/index.html')));
-
-/* istanbul ignore next */
-app.use((req, res) => {
-  /* istanbul ignore next */
-  res.status(404);
-  /* istanbul ignore next */
-  res.send({
-    error: 'not found',
-  });
-});
 
 if (!module.parent) {
   /* istanbul ignore next */
