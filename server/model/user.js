@@ -21,12 +21,12 @@ class User {
       )`;
     await pool
       .query(queryText)
-      /* istanbul ignore next */
+    /* istanbul ignore next */
       .then(() => {
         /* istanbul ignore next */
         // pool.end();
       })
-      /* istanbul ignore next */
+    /* istanbul ignore next */
       .catch(() => {
         /* istanbul ignore next */
         // pool.end();
@@ -40,12 +40,12 @@ class User {
     /* istanbul ignore next */
     await pool
       .query(queryText)
-      /* istanbul ignore next */
+    /* istanbul ignore next */
       .then(() => {
         /* istanbul ignore next */
         // pool.end();
       })
-      /* istanbul ignore next */
+    /* istanbul ignore next */
       .catch(() => {
         /* istanbul ignore next */
         // pool.end();
@@ -53,36 +53,27 @@ class User {
   }
 
   static getJsonWebToken(user) {
-    const {
-      firstname,
-      lastname,
-      email,
-    } = user;
+    const { firstname, lastname, email } = user;
     const data = { firstname, lastname, email };
     const res = {
       status: 201,
       data: {
         ...data,
-        token: Helper.jwtSignUser(user),
-      },
+        token: Helper.jwtSignUser(user)
+      }
     };
     return res;
   }
 
   static async createUser({
-    firstname, lastname, password, email,
+    firstname, lastname, password, email
   }) {
     const hashpassword = Helper.hashPassword(password);
 
     const dbQuery = `INSERT INTO
       users(firstname, lastname, email, password)
       VALUES($1, $2, $3, $4) returning *`;
-    const values = [
-      firstname,
-      lastname,
-      email,
-      hashpassword,
-    ];
+    const values = [firstname, lastname, email, hashpassword];
 
     try {
       const { rows } = await query(dbQuery, values);
@@ -93,12 +84,12 @@ class User {
       if (error.routine === '_bt_check_unique') {
         return {
           status: 409,
-          error: 'account already exists',
+          error: 'account already exists'
         };
       }
       return {
         status: 500,
-        error,
+        error
       };
     }
   }
@@ -113,7 +104,7 @@ class User {
     if (!user) {
       return {
         status: 400,
-        error: 'The credentials you provided is incorrect',
+        error: 'The credentials you provided is incorrect'
       };
     }
 
@@ -122,7 +113,7 @@ class User {
     if (!isUserPassword) {
       return {
         status: 400,
-        error: 'The credentials you provided is incorrect',
+        error: 'The credentials you provided is incorrect'
       };
     }
     const res = this.getJsonWebToken(user);
@@ -138,15 +129,18 @@ class User {
       return {
         status: 404,
         data: {
-          message: 'User not found',
-        },
+          message: 'User not found'
+        }
       };
     }
 
     const { id, firstname, lastname } = rows[0];
 
     const user = {
-      id, firstname, lastname, email,
+      id,
+      firstname,
+      lastname,
+      email
     };
     const token = Helper.jwtSignUser(user);
     /* istanbul ignore next */
@@ -155,35 +149,37 @@ class User {
       status: 200,
       data: {
         message: 'check your email for reset password link',
-        email,
-      },
+        email
+      }
     };
   }
 
   static sendEmail(email, token) {
-  /* istanbul ignore next */
+    /* istanbul ignore next */
     const mailOptions = {
       from: 'EPIC MAIL',
       to: email,
       subject: 'EPIC MAIL Reset Password Link',
       html: `<h1> reset link </h1>
          <p> click on the
-        <a href='https://frankchinedu.github.io/Epic_Mail/UI/reset-password.html?x-access-token=${token}'>link</a>
+        <a href='${process.env.APP_URL}/reset-password?x-access-token=${token}'>link</a>
         to reset password </p>
-      `,
+      `
     };
 
     /* istanbul ignore next */
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.mailtrap.io',
+      port: 2525,
       auth: {
-        user: process.env.GMAIL_ACCOUNT,
-        pass: process.env.GMAIL_PASSWORD,
-      },
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD
+      }
     });
 
     /* istanbul ignore next */
-    transporter.sendMail(mailOptions)
+    transporter
+      .sendMail(mailOptions)
     /* istanbul ignore next */
       .then(() => ({}))
     /* istanbul ignore next */
@@ -205,7 +201,7 @@ class User {
       if (!user) {
         return {
           status: 404,
-          error: 'User not found',
+          error: 'User not found'
         };
       }
 
@@ -214,21 +210,20 @@ class User {
       if (!res.rows[0]) {
         return {
           status: 400,
-          error: 'something went wrong try again',
+          error: 'something went wrong try again'
         };
       }
       return {
         status: 200,
-        data: 'Password changed, goto login',
+        data: 'Password changed, goto login'
       };
     } catch (error) {
       return {
         status: 400,
-        error,
+        error
       };
     }
   }
 }
-
 
 export { User };

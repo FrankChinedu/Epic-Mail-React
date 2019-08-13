@@ -8,16 +8,13 @@
 		"drop-db-tables": "babel-node server/model/index dropAllTables ",
 		"create-db-tables": "babel-node server/model/index createAllTables ",
 		"run-tables": "npm run drop-db-tables && npm run create-db-tables",
-		"test":
-			"NODE_ENV=test npm run run-tables && jest --detectOpenHandles --forceExit --coverage && npm run codeclimate-coverage",
-		"backend:test":
-			"NODE_ENV=test npm run run-tables && jest  ./server --verbose --forceExit --coverage",
+		"test": "NODE_ENV=test npm run run-tables && jest --detectOpenHandles --forceExit --coverage && npm run codeclimate-coverage",
+		"backend:test": "NODE_ENV=test npm run run-tables && jest  ./server --verbose --forceExit --coverage",
 		"build": "babel server --copy-files --out-dir dist",
 		"serve": "node dist/app.js",
 		"heroku-postbuild": "npm run build:client && npm run build",
 		"lint": "eslint server/ --fix",
-		"codeclimate-coverage":
-			"CODECLIMATE_REPO_TOKEN=bccec37b7f6f09497c77a0fab52c8218278a4da36076a333e77a8851ff2819f9 codeclimate-test-reporter < lcov.info",
+		"codeclimate-coverage": "CODECLIMATE_REPO_TOKEN=bccec37b7f6f09497c77a0fab52c8218278a4da36076a333e77a8851ff2819f9 codeclimate-test-reporter < lcov.info",
 		"webpack": "webpack",
 		"build:client": "webpack --mode=production",
 		"client:test": "jest ./client --detectOpenHandles --verbose --coverage",
@@ -30,7 +27,10 @@
 		"type": "git",
 		"url": "git+https://github.com/FrankChinedu/Epic-Mail-React.git"
 	},
-	"keywords": ["email", "message"],
+	"keywords": [
+		"email",
+		"message"
+	],
 	"author": "obi chinedu frank <frankieetchy@gmail.com>",
 	"license": "MIT",
 	"bugs": {
@@ -59,6 +59,7 @@
 		"react-dom": "^16.8.6",
 		"react-redux": "^7.1.0",
 		"react-router-dom": "^5.0.1",
+		"react-toastify": "^5.3.2",
 		"redux": "^4.0.4",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-mock-store": "^1.5.3",
