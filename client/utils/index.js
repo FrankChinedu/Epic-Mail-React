@@ -9,11 +9,11 @@ const saveToLocalStorage = (user) => {
 };
 
 export const axiosCall = async ({
-  path, payload, method, contentType
+  path, payload, method, contentType, token
 }) => {
   const url = `${path}`;
   const headers = {
-    'x-access-token': localStorage.token,
+    'x-access-token': token || localStorage.token,
     'Content-Type': contentType || 'application/json'
   };
   const axiosdata = {

@@ -1,8 +1,144 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sign in should render sign in page 1`] = `<signinComponent />`;
+exports[`Reset Password should render reset password page 1`] = `
+<Fragment>
+  <main
+    className="flex justify-content-ctr mt-55"
+  >
+    <div
+      className="col-5 mt-5 form-cover"
+    >
+      <h3
+        className="center-text"
+      >
+        Reset Password
+      </h3>
+      <Formik
+        enableReinitialize={false}
+        initialValues={
+          Object {
+            "password": "",
+            "passwordConfirmation": "",
+          }
+        }
+        isInitialValid={false}
+        onSubmit={[Function]}
+        validateOnBlur={true}
+        validateOnChange={true}
+        validationSchema={
+          ObjectSchema {
+            "_blacklist": RefSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "_conditions": Array [],
+            "_defaultDefault": [Function],
+            "_deps": Array [],
+            "_excludedEdges": Array [],
+            "_exclusive": Object {},
+            "_mutate": undefined,
+            "_nodes": Array [
+              "passwordConfirmation",
+              "password",
+            ],
+            "_options": Object {
+              "abortEarly": true,
+              "recursive": true,
+            },
+            "_type": "object",
+            "_typeError": [Function],
+            "_whitelist": RefSet {
+              "list": Set {},
+              "refs": Map {},
+            },
+            "fields": Object {
+              "password": StringSchema {
+                "_blacklist": RefSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_conditions": Array [],
+                "_deps": Array [],
+                "_exclusive": Object {
+                  "min": true,
+                  "required": true,
+                },
+                "_mutate": undefined,
+                "_options": Object {
+                  "abortEarly": true,
+                  "recursive": true,
+                },
+                "_type": "string",
+                "_typeError": [Function],
+                "_whitelist": RefSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "tests": Array [
+                  [Function],
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+              },
+              "passwordConfirmation": StringSchema {
+                "_blacklist": RefSet {
+                  "list": Set {},
+                  "refs": Map {},
+                },
+                "_conditions": Array [],
+                "_deps": Array [],
+                "_exclusive": Object {
+                  "required": true,
+                },
+                "_mutate": undefined,
+                "_options": Object {
+                  "abortEarly": true,
+                  "recursive": true,
+                },
+                "_type": "string",
+                "_typeError": [Function],
+                "_whitelist": RefSet {
+                  "list": Set {
+                    null,
+                  },
+                  "refs": Map {
+                    "password" => Reference {
+                      "getter": [Function],
+                      "isContext": false,
+                      "isSibling": true,
+                      "isValue": false,
+                      "key": "password",
+                      "map": undefined,
+                      "path": "password",
+                    },
+                  },
+                },
+                "_whitelistError": [Function],
+                "tests": Array [
+                  [Function],
+                ],
+                "transforms": Array [
+                  [Function],
+                ],
+              },
+            },
+            "tests": Array [],
+            "transforms": Array [
+              [Function],
+            ],
+          }
+        }
+      >
+        <Component />
+      </Formik>
+    </div>
+  </main>
+</Fragment>
+`;
 
-exports[`Sign in should render signup with store 1`] = `
+exports[`Reset Password should render reset password with store 1`] = `
 <BrowserRouter>
   <Router
     history={
@@ -26,7 +162,16 @@ exports[`Sign in should render signup with store 1`] = `
       }
     }
   >
-    <Connect(Signin)
+    <Connect(ResetPassword)
+      history={
+        Object {
+          "history": Object {
+            "location": Object {
+              "search": "somethind",
+            },
+          },
+        }
+      }
       store={
         Object {
           "clearActions": [Function],
@@ -38,9 +183,17 @@ exports[`Sign in should render signup with store 1`] = `
         }
       }
     >
-      <Signin
-        authError={null}
-        onSignIn={[Function]}
+      <ResetPassword
+        history={
+          Object {
+            "history": Object {
+              "location": Object {
+                "search": "somethind",
+              },
+            },
+          }
+        }
+        onSubmit={[Function]}
         store={
           Object {
             "clearActions": [Function],
@@ -51,7 +204,6 @@ exports[`Sign in should render signup with store 1`] = `
             "subscribe": [Function],
           }
         }
-        user={Array []}
       >
         <main
           className="flex justify-content-ctr mt-55"
@@ -62,14 +214,14 @@ exports[`Sign in should render signup with store 1`] = `
             <h3
               className="center-text"
             >
-              Sign In
+              Reset Password
             </h3>
             <Formik
               enableReinitialize={false}
               initialValues={
                 Object {
-                  "email": "",
                   "password": "",
+                  "passwordConfirmation": "",
                 }
               }
               isInitialValid={false}
@@ -89,8 +241,8 @@ exports[`Sign in should render signup with store 1`] = `
                   "_exclusive": Object {},
                   "_mutate": undefined,
                   "_nodes": Array [
+                    "passwordConfirmation",
                     "password",
-                    "email",
                   ],
                   "_options": Object {
                     "abortEarly": true,
@@ -103,36 +255,6 @@ exports[`Sign in should render signup with store 1`] = `
                     "refs": Map {},
                   },
                   "fields": Object {
-                    "email": StringSchema {
-                      "_blacklist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "_conditions": Array [],
-                      "_deps": Array [],
-                      "_exclusive": Object {
-                        "required": true,
-                        "undefined": false,
-                      },
-                      "_mutate": undefined,
-                      "_options": Object {
-                        "abortEarly": true,
-                        "recursive": true,
-                      },
-                      "_type": "string",
-                      "_typeError": [Function],
-                      "_whitelist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "tests": Array [
-                        [Function],
-                        [Function],
-                      ],
-                      "transforms": Array [
-                        [Function],
-                      ],
-                    },
                     "password": StringSchema {
                       "_blacklist": RefSet {
                         "list": Set {},
@@ -163,6 +285,47 @@ exports[`Sign in should render signup with store 1`] = `
                         [Function],
                       ],
                     },
+                    "passwordConfirmation": StringSchema {
+                      "_blacklist": RefSet {
+                        "list": Set {},
+                        "refs": Map {},
+                      },
+                      "_conditions": Array [],
+                      "_deps": Array [],
+                      "_exclusive": Object {
+                        "required": true,
+                      },
+                      "_mutate": undefined,
+                      "_options": Object {
+                        "abortEarly": true,
+                        "recursive": true,
+                      },
+                      "_type": "string",
+                      "_typeError": [Function],
+                      "_whitelist": RefSet {
+                        "list": Set {
+                          null,
+                        },
+                        "refs": Map {
+                          "password" => Reference {
+                            "getter": [Function],
+                            "isContext": false,
+                            "isSibling": true,
+                            "isValue": false,
+                            "key": "password",
+                            "map": undefined,
+                            "path": "password",
+                          },
+                        },
+                      },
+                      "_whitelistError": [Function],
+                      "tests": Array [
+                        [Function],
+                      ],
+                      "transforms": Array [
+                        [Function],
+                      ],
+                    },
                   },
                   "tests": Array [],
                   "transforms": Array [
@@ -178,24 +341,6 @@ exports[`Sign in should render signup with store 1`] = `
                   className="mt-25"
                 >
                   <label
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    className="form-control mt-5"
-                    name="email"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    placeholder="email"
-                    type="email"
-                    value=""
-                  />
-                </div>
-                <div
-                  className="mt-25"
-                >
-                  <label
                     htmlFor="password"
                   >
                     Password
@@ -206,31 +351,39 @@ exports[`Sign in should render signup with store 1`] = `
                     name="password"
                     onBlur={[Function]}
                     onChange={[Function]}
+                    placeholder="password"
                     type="password"
                     value=""
+                  />
+                  <p
+                    className="center-text"
+                  />
+                </div>
+                <div
+                  className="mt-25"
+                >
+                  <label
+                    htmlFor="passwordConfirmation"
+                  >
+                    Confirm Password
+                  </label>
+                  <input
+                    autoComplete="true"
+                    className="form-control mt-5"
+                    name="passwordConfirmation"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    placeholder="confirm password"
+                    type="password"
+                    value=""
+                  />
+                  <p
+                    className="center-text"
                   />
                 </div>
                 <div
                   className="center-text mt-25"
                 />
-                <div
-                  className="center-text"
-                >
-                  <Link
-                    to="/forgot-password"
-                  >
-                    <a
-                      href="/forgot-password"
-                      onClick={[Function]}
-                    >
-                      <p
-                        className=""
-                      >
-                        Forgot Password
-                      </p>
-                    </a>
-                  </Link>
-                </div>
                 <div
                   className="mt-25 center-text"
                 >
@@ -239,15 +392,15 @@ exports[`Sign in should render signup with store 1`] = `
                     disabled={false}
                     type="submit"
                   >
-                    Sign in
+                    Submit
                   </button>
                 </div>
               </form>
             </Formik>
           </div>
         </main>
-      </Signin>
-    </Connect(Signin)>
+      </ResetPassword>
+    </Connect(ResetPassword)>
   </Router>
 </BrowserRouter>
 `;

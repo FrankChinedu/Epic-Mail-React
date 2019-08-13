@@ -6,7 +6,7 @@ import { signUpAction } from '../../store/actions/authActions';
 
 const Signup = props => (
   <Fragment>
-    <main className="flex justify-content-ctr">
+    <main className="flex justify-content-ctr mt-55">
       <div className="col-5 mt-5 form-cover">
         <h3 className="center-text">Sign Up</h3>
         <Formik
@@ -18,9 +18,13 @@ const Signup = props => (
             passwordConfirmation: ''
           }}
           validationSchema={RegisterValidator}
+          /* istanbul ignore next */
           onSubmit={(values, { setSubmitting, resetForm }) => {
+            /* istanbul ignore next */
             setSubmitting(false);
+            /* istanbul ignore next */
             props.onSignUp(values, props.history);
+            /* istanbul ignore next */
             resetForm({
               email: '',
               firstname: '',

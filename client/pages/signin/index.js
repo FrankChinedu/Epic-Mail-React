@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { SignInValidator } from '../../validations/Auth';
 import { signInAction } from '../../store/actions/authActions';
 
 const Signin = props => (
   <Fragment>
-    <main className="flex justify-content-ctr">
+    <main className="flex justify-content-ctr mt-55">
       <div className="col-5 mt-5 form-cover">
         <h3 className="center-text">Sign In</h3>
         <Formik
@@ -15,9 +16,13 @@ const Signin = props => (
             password: ''
           }}
           validationSchema={SignInValidator}
+          /* istanbul ignore next */
           onSubmit={(values, { setSubmitting, resetForm }) => {
+            /* istanbul ignore next */
             setSubmitting(false);
+            /* istanbul ignore next */
             props.onSignIn(values, props.history);
+            /* istanbul ignore next */
             resetForm({
               email: '',
               password: ''
@@ -57,6 +62,11 @@ const Signin = props => (
               </div>
               <div className="center-text mt-25">
                 {props.authError && <span className="error">{props.authError}</span>}
+              </div>
+              <div className="center-text">
+                <Link to="/forgot-password">
+                  <p className="">Forgot Password</p>
+                </Link>
               </div>
               <div className="mt-25 center-text">
                 <button type="submit" className="mt-25 btn" disabled={isSubmitting}>

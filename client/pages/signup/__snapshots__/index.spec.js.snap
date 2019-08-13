@@ -54,7 +54,7 @@ exports[`Sign up should render signup with store 1`] = `
         user={Array []}
       >
         <main
-          className="flex justify-content-ctr"
+          className="flex justify-content-ctr mt-55"
         >
           <div
             className="col-5 mt-5 form-cover"
