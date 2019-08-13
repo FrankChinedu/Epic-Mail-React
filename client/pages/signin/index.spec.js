@@ -3,13 +3,13 @@ import { shallow, mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Signup, { signupComponent } from './index';
+import Signin, { signinComponent } from './index';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 let store;
 
-describe('Sign up', () => {
+describe('Sign in', () => {
   beforeEach(() => {
     store = mockStore({
       auth: {
@@ -18,8 +18,8 @@ describe('Sign up', () => {
       }
     });
   });
-  it('should render correctly in "debug" mode', () => {
-    const component = shallow(<signupComponent />);
+  it('should render sign in page', () => {
+    const component = shallow(<signinComponent />);
 
     expect(component).toMatchSnapshot();
   });
@@ -27,7 +27,7 @@ describe('Sign up', () => {
   it('should render signup with store', () => {
     const component = mount(
       <Router>
-        <Signup store={store} />
+        <Signin store={store} />
       </Router>
     );
     expect(component).toMatchSnapshot();

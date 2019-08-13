@@ -127,7 +127,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  /* istanbul ignore next */
   onSignUp: (newUser, history) => dispatch(signUpAction(newUser, history))
 });
-export { Signup };
+
+export const signupComponent = Signup;
+
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

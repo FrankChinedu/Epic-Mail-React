@@ -4,15 +4,19 @@ import {
 } from 'react-router-dom';
 import Home from '../pages/home';
 import Signup from '../pages/signup';
+import Signin from '../pages/signin';
 import Navbar from '../components/navbar';
 import NotFound from '../pages/notFound';
 
+/* istanbul ignore next */
 const App = ({ history }) => (
+  /* istanbul ignore next */
   <React.Fragment>
-    {['/signup'].includes(history.location.pathname) && <Navbar />}
+    {['/signup', '/signin'].includes(history.location.pathname) && <Navbar history={history} />}
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/signup" component={Signup} />
+      <Route path="/signin" component={Signin} />
       <Route component={NotFound} />
     </Switch>
   </React.Fragment>

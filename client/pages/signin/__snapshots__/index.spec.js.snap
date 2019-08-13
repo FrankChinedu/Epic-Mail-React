@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sign up should render correctly in "debug" mode 1`] = `<signupComponent />`;
+exports[`Sign in should render sign in page 1`] = `<signinComponent />`;
 
-exports[`Sign up should render signup with store 1`] = `
+exports[`Sign in should render signup with store 1`] = `
 <BrowserRouter>
   <Router
     history={
@@ -26,7 +26,7 @@ exports[`Sign up should render signup with store 1`] = `
       }
     }
   >
-    <Connect(Signup)
+    <Connect(Signin)
       store={
         Object {
           "clearActions": [Function],
@@ -38,9 +38,9 @@ exports[`Sign up should render signup with store 1`] = `
         }
       }
     >
-      <Signup
+      <Signin
         authError={null}
-        onSignUp={[Function]}
+        onSignIn={[Function]}
         store={
           Object {
             "clearActions": [Function],
@@ -62,17 +62,14 @@ exports[`Sign up should render signup with store 1`] = `
             <h3
               className="center-text"
             >
-              Sign Up
+              Sign In
             </h3>
             <Formik
               enableReinitialize={false}
               initialValues={
                 Object {
                   "email": "",
-                  "firstname": "",
-                  "lastname": "",
                   "password": "",
-                  "passwordConfirmation": "",
                 }
               }
               isInitialValid={false}
@@ -92,10 +89,7 @@ exports[`Sign up should render signup with store 1`] = `
                   "_exclusive": Object {},
                   "_mutate": undefined,
                   "_nodes": Array [
-                    "passwordConfirmation",
                     "password",
-                    "lastname",
-                    "firstname",
                     "email",
                   ],
                   "_options": Object {
@@ -139,62 +133,6 @@ exports[`Sign up should render signup with store 1`] = `
                         [Function],
                       ],
                     },
-                    "firstname": StringSchema {
-                      "_blacklist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "_conditions": Array [],
-                      "_deps": Array [],
-                      "_exclusive": Object {
-                        "required": true,
-                      },
-                      "_mutate": undefined,
-                      "_options": Object {
-                        "abortEarly": true,
-                        "recursive": true,
-                      },
-                      "_type": "string",
-                      "_typeError": [Function],
-                      "_whitelist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "tests": Array [
-                        [Function],
-                      ],
-                      "transforms": Array [
-                        [Function],
-                      ],
-                    },
-                    "lastname": StringSchema {
-                      "_blacklist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "_conditions": Array [],
-                      "_deps": Array [],
-                      "_exclusive": Object {
-                        "required": true,
-                      },
-                      "_mutate": undefined,
-                      "_options": Object {
-                        "abortEarly": true,
-                        "recursive": true,
-                      },
-                      "_type": "string",
-                      "_typeError": [Function],
-                      "_whitelist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "tests": Array [
-                        [Function],
-                      ],
-                      "transforms": Array [
-                        [Function],
-                      ],
-                    },
                     "password": StringSchema {
                       "_blacklist": RefSet {
                         "list": Set {},
@@ -225,47 +163,6 @@ exports[`Sign up should render signup with store 1`] = `
                         [Function],
                       ],
                     },
-                    "passwordConfirmation": StringSchema {
-                      "_blacklist": RefSet {
-                        "list": Set {},
-                        "refs": Map {},
-                      },
-                      "_conditions": Array [],
-                      "_deps": Array [],
-                      "_exclusive": Object {
-                        "required": true,
-                      },
-                      "_mutate": undefined,
-                      "_options": Object {
-                        "abortEarly": true,
-                        "recursive": true,
-                      },
-                      "_type": "string",
-                      "_typeError": [Function],
-                      "_whitelist": RefSet {
-                        "list": Set {
-                          null,
-                        },
-                        "refs": Map {
-                          "password" => Reference {
-                            "getter": [Function],
-                            "isContext": false,
-                            "isSibling": true,
-                            "isValue": false,
-                            "key": "password",
-                            "map": undefined,
-                            "path": "password",
-                          },
-                        },
-                      },
-                      "_whitelistError": [Function],
-                      "tests": Array [
-                        [Function],
-                      ],
-                      "transforms": Array [
-                        [Function],
-                      ],
-                    },
                   },
                   "tests": Array [],
                   "transforms": Array [
@@ -277,42 +174,6 @@ exports[`Sign up should render signup with store 1`] = `
               <form
                 onSubmit={[Function]}
               >
-                <div
-                  className="mt-25"
-                >
-                  <label
-                    htmlFor="firstName"
-                  >
-                    First Name
-                  </label>
-                  <input
-                    className="form-control mt-5"
-                    name="firstname"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    placeholder="First Name"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <div
-                  className="mt-25"
-                >
-                  <label
-                    htmlFor="lastname"
-                  >
-                    Last Name
-                  </label>
-                  <input
-                    className="form-control mt-5"
-                    name="lastname"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    placeholder="Last Name"
-                    type="text"
-                    value=""
-                  />
-                </div>
                 <div
                   className="mt-25"
                 >
@@ -350,24 +211,6 @@ exports[`Sign up should render signup with store 1`] = `
                   />
                 </div>
                 <div
-                  className="mt-25"
-                >
-                  <label
-                    htmlFor="passwordConfirmation"
-                  >
-                    Confirm Password
-                  </label>
-                  <input
-                    autoComplete="true"
-                    className="form-control mt-5"
-                    name="passwordConfirmation"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    type="password"
-                    value=""
-                  />
-                </div>
-                <div
                   className="center-text mt-25"
                 />
                 <div
@@ -378,15 +221,15 @@ exports[`Sign up should render signup with store 1`] = `
                     disabled={false}
                     type="submit"
                   >
-                    Sign Up
+                    Sign in
                   </button>
                 </div>
               </form>
             </Formik>
           </div>
         </main>
-      </Signup>
-    </Connect(Signup)>
+      </Signin>
+    </Connect(Signin)>
   </Router>
 </BrowserRouter>
 `;

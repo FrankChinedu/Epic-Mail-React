@@ -9,7 +9,7 @@
 		"create-db-tables": "babel-node server/model/index createAllTables ",
 		"run-tables": "npm run drop-db-tables && npm run create-db-tables",
 		"test":
-			"NODE_ENV=test npm run run-tables && jest --forceExit --coverage && npm run codeclimate-coverage",
+			"NODE_ENV=test npm run run-tables && jest --detectOpenHandles --forceExit --coverage && npm run codeclimate-coverage",
 		"backend:test":
 			"NODE_ENV=test npm run run-tables && jest  ./server --verbose --forceExit --coverage",
 		"build": "babel server --copy-files --out-dir dist",
@@ -20,7 +20,8 @@
 			"CODECLIMATE_REPO_TOKEN=bccec37b7f6f09497c77a0fab52c8218278a4da36076a333e77a8851ff2819f9 codeclimate-test-reporter < lcov.info",
 		"webpack": "webpack",
 		"build:client": "webpack --mode=production",
-		"client:test": "jest ./client --detectOpenHandles --verbose --coverage"
+		"client:test": "jest ./client --detectOpenHandles --verbose --coverage",
+		"watch": "jest --watch ./client"
 	},
 	"engines": {
 		"node": "10.10.0"
@@ -48,8 +49,10 @@
 		"express": "4.16.4",
 		"formik": "^1.5.8",
 		"joi": "14.3.1",
+		"jsdom": "^15.1.1",
 		"jsonwebtoken": "8.5.0",
 		"morgan": "1.9.1",
+		"moxios": "^0.4.0",
 		"nodemailer": "5.1.1",
 		"pg": "7.8.2",
 		"react": "^16.8.6",
@@ -57,8 +60,9 @@
 		"react-redux": "^7.1.0",
 		"react-router-dom": "^5.0.1",
 		"redux": "^4.0.4",
-		"redux-thunk": "^2.3.0",
 		"redux-devtools-extension": "^2.13.8",
+		"redux-mock-store": "^1.5.3",
+		"redux-thunk": "^2.3.0",
 		"swagger-ui-express": "4.0.2",
 		"webpack": "^4.36.1",
 		"webpack-dev-middleware": "^3.7.0",

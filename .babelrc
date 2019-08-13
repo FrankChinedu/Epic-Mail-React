@@ -13,5 +13,10 @@
   "plugins": [
     "dynamic-import-node-babel-7",
     "@babel/plugin-proposal-class-properties"
-  ]
+  ],
+  "env": {
+    "development" : {
+      "compact": true
+    }
+  }
 }
