@@ -1,6 +1,7 @@
 module.exports = {
-  testPathIgnorePatterns: ['/node_modules/', '/server/model', '/client/store/*.js'],
-  testEnvironment: 'node',
+  testPathIgnorePatterns: ['/node_modules/'],
+  testEnvironment: 'jsdom',
   setupFiles: ['./client/setupTest/setupTest.js'],
-  snapshotSerializers: ['enzyme-to-json/serializer']
+  snapshotSerializers: ['enzyme-to-json/serializer'],
+  coveragePathIgnorePatterns: ['/server/model/', '/client/utils/', '/server/helpers/']
 };

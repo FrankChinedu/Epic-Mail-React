@@ -14,6 +14,16 @@ const authReducer = (state = initState, action) => {
       ...state,
       authError: action.error
     };
+  case 'SIGNIN_SUCCESS':
+    return {
+      ...state,
+      user: action.payLoad
+    };
+  case 'SIGNIN_ERROR':
+    return {
+      ...state,
+      authError: action.error
+    };
   default:
     return state;
   }

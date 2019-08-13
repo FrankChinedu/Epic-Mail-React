@@ -13,21 +13,25 @@ import path from 'path';
 import webpackConfig from '../webpack.config';
 import Route from './routes/index';
 
-const swaggerDocument = YAML.load(`${__dirname}/../swagger.yaml`);
-
 const app = express();
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+if (process.env.NODE_ENV !== 'test') {
+  const swaggerDocument = YAML.load(`${__dirname}/../swagger.yaml`);
+
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
 
 if (process.env.NODE_ENV === 'development') {
+  /* istanbul ignore next */
   const compiler = Webpack(webpackConfig);
 
+  /* istanbul ignore next */
   app.use(
     WebpackDevMiddleware(compiler, {
       hot: true,
       publicPath: webpackConfig.output.publicPath
     })
   );
-
+  /* istanbul ignore next */
   app.use(WebpackHotMiddleware(compiler));
 }
 
@@ -58,6 +62,7 @@ Route(app);
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+/* istanbul ignore next */
 app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public/index.html')));
 
 if (!module.parent) {
