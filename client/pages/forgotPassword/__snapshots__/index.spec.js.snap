@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Forgot Password should render forgot password page 1`] = `<forgotPasswordComponent />`;
+
+exports[`Forgot Password should render forgot password with store 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Connect(ForgotPassword)
+      store={
+        Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        }
+      }
+    >
+      <ForgotPassword
+        onSubmit={[Function]}
+        store={
+          Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+        }
+      >
+        <div>
+          <main
+            className="flex justify-content-ctr mt-55"
+          >
+            <div
+              className="col-5 mt-5 form-cover"
+            >
+              <h3
+                className="center-text"
+              >
+                Forgot Password
+              </h3>
+              <Formik
+                enableReinitialize={false}
+                initialValues={
+                  Object {
+                    "email": "",
+                  }
+                }
+                isInitialValid={false}
+                onSubmit={[Function]}
+                validateOnBlur={true}
+                validateOnChange={true}
+                validationSchema={
+                  ObjectSchema {
+                    "_blacklist": RefSet {
+                      "list": Set {},
+                      "refs": Map {},
+                    },
+                    "_conditions": Array [],
+                    "_defaultDefault": [Function],
+                    "_deps": Array [],
+                    "_excludedEdges": Array [],
+                    "_exclusive": Object {},
+                    "_mutate": undefined,
+                    "_nodes": Array [
+                      "email",
+                    ],
+                    "_options": Object {
+                      "abortEarly": true,
+                      "recursive": true,
+                    },
+                    "_type": "object",
+                    "_typeError": [Function],
+                    "_whitelist": RefSet {
+                      "list": Set {},
+                      "refs": Map {},
+                    },
+                    "fields": Object {
+                      "email": StringSchema {
+                        "_blacklist": RefSet {
+                          "list": Set {},
+                          "refs": Map {},
+                        },
+                        "_conditions": Array [],
+                        "_deps": Array [],
+                        "_exclusive": Object {
+                          "required": true,
+                          "undefined": false,
+                        },
+                        "_mutate": undefined,
+                        "_options": Object {
+                          "abortEarly": true,
+                          "recursive": true,
+                        },
+                        "_type": "string",
+                        "_typeError": [Function],
+                        "_whitelist": RefSet {
+                          "list": Set {},
+                          "refs": Map {},
+                        },
+                        "tests": Array [
+                          [Function],
+                          [Function],
+                        ],
+                        "transforms": Array [
+                          [Function],
+                        ],
+                      },
+                    },
+                    "tests": Array [],
+                    "transforms": Array [
+                      [Function],
+                    ],
+                  }
+                }
+              >
+                <form
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="mt-25"
+                  >
+                    <label
+                      htmlFor="email"
+                    >
+                      Email
+                    </label>
+                    <input
+                      className="form-control mt-5"
+                      name="email"
+                      onBlur={[Function]}
+                      onChange={[Function]}
+                      placeholder="email"
+                      type="email"
+                      value=""
+                    />
+                    <p
+                      className="center-text"
+                    />
+                  </div>
+                  <div
+                    className="center-text mt-25"
+                  />
+                  <div
+                    className="mt-25 center-text"
+                  >
+                    <button
+                      className="mt-25 btn"
+                      disabled={false}
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </Formik>
+            </div>
+          </main>
+        </div>
+      </ForgotPassword>
+    </Connect(ForgotPassword)>
+  </Router>
+</BrowserRouter>
+`;
