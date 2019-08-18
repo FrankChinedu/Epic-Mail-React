@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Navbar = ({ history }) => {
+const Navbar = ({ history, isAuthenticated, user }) => {
   const pathUrlname = (pathurl, name) => (
-    <Link to={pathurl} className="li-sty-none">
-      {name}
-    </Link>
+    <div className="align-self">
+      <h3 className="m-0  sign-in-out">
+        <Link to={pathurl} className="li-sty-none">
+          {name}
+        </Link>
+      </h3>
+    </div>
   );
 
   const signin =		history && history.location.pathname === '/signup' ? pathUrlname('/signin', 'Sign In') : '';
@@ -22,16 +27,27 @@ const Navbar = ({ history }) => {
               <span className="brand-image" />
             </h1>
           </Link>
-          <div className="align-self">
-            <h3 className="m-0  sign-in-out">
-              {signin}
-              {signup}
-            </h3>
-          </div>
+          {signin}
+          {signup}
+          {isAuthenticated ? (
+            <div className="align-self user-panel flex align-item-center">
+              <div className="prof-img mr-25" />
+              <p>{user.firstname}</p>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </header>
     </React.Fragment>
   );
 };
 
-export default Navbar;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user
+});
+
+export const NavbarComponent = Navbar;
+
+export default connect(mapStateToProps)(Navbar);

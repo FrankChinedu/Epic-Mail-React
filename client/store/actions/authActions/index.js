@@ -1,5 +1,5 @@
-import saveToLocalStorage, { axiosCall } from '../../utils';
-import callToast from '../../components/Toast';
+import saveToLocalStorage, { axiosCall } from '../../../utils';
+import callToast from '../../../components/Toast';
 
 export const signUpAction = (values, history) => async (dispatch) => {
   delete values.passwordConfirmation;
@@ -85,5 +85,30 @@ export const ResetPasswordAction = value => async () => {
     const { error } = response.data;
     const message = (error && error.message) || error;
     callToast(message, 'error');
+  }
+};
+
+export const setUpUser = payload => ({ type: 'SETUP_USER', payload });
+
+export const getUser = () => (dispatch) => {
+  try {
+    let user = localStorage.getItem('user');
+    user = JSON.parse(user);
+    if (user) {
+      const payload = {
+        user,
+        isAuthenticated: true
+      };
+      dispatch(setUpUser(payload));
+    } else {
+      // eslint-disable-next-line no-throw-literal
+      throw null;
+    }
+  } catch (error) {
+    const payload = {
+      user: {},
+      isAuthenticated: false
+    };
+    dispatch(setUpUser(payload));
   }
 };

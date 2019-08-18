@@ -24,13 +24,6 @@ exports[`Navbar should render correctly in "debug" mode 1`] = `
           />
         </h1>
       </Link>
-      <div
-        className="align-self"
-      >
-        <h3
-          className="m-0  sign-in-out"
-        />
-      </div>
     </div>
   </header>
 </Fragment>

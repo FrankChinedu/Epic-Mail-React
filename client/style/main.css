@@ -89,11 +89,11 @@
 	background: #1d1b1b26;
 }
 
-.left-side-panel > ul > .inbox-active {
+.left-side-panel > ul .active {
 	background: #007bff78;
 }
 
-.left-side-panel > ul > .inbox-active:hover {
+.left-side-panel > ul .active:hover {
 	background: #007bff78;
 }
 

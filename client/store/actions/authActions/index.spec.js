@@ -1,16 +1,13 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { axiosCall } from '../../utils';
+import { axiosCall } from '../../../utils';
 import {
-  signInAction,
-  signUpAction,
-  forgotPasswordAction,
-  ResetPasswordAction
-} from './authActions';
+  signInAction, signUpAction, forgotPasswordAction, ResetPasswordAction
+} from './index';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-jest.mock('../../utils');
+jest.mock('../../../utils');
 let store;
 const user = {
   firstname: 'frank',

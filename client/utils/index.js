@@ -28,4 +28,10 @@ export const axiosCall = async ({
   return data;
 };
 
+export const formatDate = (time) => {
+  let t = new Date(time);
+  t = t.toLocaleString();
+  return t;
+};
+
 export default saveToLocalStorage;

@@ -3,7 +3,7 @@
 exports[`Main should render correctly in "debug" mode 1`] = `
 <Fragment>
   <BrowserRouter>
-    <withRouter(App) />
+    <Connect(AuthWrapper) />
   </BrowserRouter>
 </Fragment>
 `;
