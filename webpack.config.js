@@ -5,12 +5,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    index: ['webpack-hot-middleware/client?reload=true', './client/index.js'],
+    index: ['./client/index.js']
   },
   output: {
     path: path.resolve(__dirname, 'server', 'public'),
     filename: 'app.js',
-    publicPath: '/',
+    publicPath: '/'
   },
   mode: ['staging', 'review', 'production'].includes(process.env.NODE_ENV)
     ? 'production'
@@ -20,11 +20,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ['babel-loader']
       },
       {
         test: /.(css|scss)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /.(jpg|jpeg|png|gif|mp3|svg)$/,
@@ -32,12 +32,12 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name]-[hash:8].[ext]',
-            },
-          },
-        ],
-      },
-    ],
+              name: '[path][name]-[hash:8].[ext]'
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     // new HtmlWebpackPlugin({
@@ -47,7 +47,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: 'app.css',
-      chunkFilename: '[id].css',
-    }),
-  ],
+      chunkFilename: '[id].css'
+    })
+  ]
 };

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Sign up /Post auth/login should log a user in 1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[` Sign up /Post auth/login should not be able to log a user in if wrong parameters are passed 1`] = `
+Array [
+  "status",
+  "error",
+]
+`;
+
+exports[` Sign up /Post auth/signup should not be able to sign up a new user if first name parameter is missing 1`] = `
+Array [
+  "status",
+  "error",
+]
+`;
+
+exports[` Sign up /Post auth/signup should not be able to sign up a new user if no parameter is missing 1`] = `
+Array [
+  "status",
+  "error",
+]
+`;
+
+exports[` Sign up /Post auth/signup should not be able to sign up a new user if password parameter is missing  1`] = `
+Array [
+  "status",
+  "error",
+]
+`;
+
+exports[` Sign up sign up should create an account for a new user  1`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;
+
+exports[` Sign up sign up should create an account for a new user  2`] = `
+Array [
+  "firstname",
+  "lastname",
+  "email",
+  "token",
+]
+`;

@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.default=void 0;var _user=require("../model/user");class UserServices{static async createUser(data){return _user.User.createUser(data);}static async login(data){return _user.User.login(data);}static async reset(email){const res=await _user.User.reset(email);return res;}static async resetPassword(data){// console.log(data);
+return _user.User.resetPassword(data);}}exports.default=UserServices;
