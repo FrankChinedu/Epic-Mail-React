@@ -2,10 +2,12 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import RightSide from '../../components/rightSide';
 import EmptyMessage from '../../components/emptyMessage';
-import { getInboxActions } from '../../store/actions/InboxActions';
+import { getInboxActions, deleteInboxMessage } from '../../store/actions/InboxActions';
 import Listmessage from '../../components/InboxList';
 
-const Inbox = ({ getInbox, inbox, setInbox }) => {
+const Inbox = ({
+  getInbox, inbox, setInbox, handleInboxDelete
+}) => {
   useEffect(
     () => {
       if (!setInbox) {
@@ -15,8 +17,12 @@ const Inbox = ({ getInbox, inbox, setInbox }) => {
     [setInbox]
   );
 
+  const handleDeleteInbox = (id) => {
+    handleInboxDelete(id);
+  };
+
   const showMessage = inbox.length ? (
-    <Listmessage messages={inbox} />
+    <Listmessage messages={inbox} handleDeleteInbox={handleDeleteInbox} />
   ) : (
     <EmptyMessage message={'Inbox Is Empty until you have new Messages....'} />
   );
@@ -35,7 +41,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getInbox: () => getInboxActions()
+  getInbox: () => getInboxActions(),
+  handleInboxDelete: id => deleteInboxMessage(id)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inbox);

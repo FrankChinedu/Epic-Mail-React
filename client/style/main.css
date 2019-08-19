@@ -77,7 +77,12 @@
 	padding: 0;
 }
 
-.left-side-panel > ul > li {
+.left-side-panel > ul > a {
+	display: block;
+	border-radius: 0 23px 23px 0;
+}
+
+.left-side-panel > ul > a > li {
 	background: #1d1b1b17;
 	border-radius: 0 23px 23px 0;
 	padding: 7px;
@@ -85,15 +90,19 @@
 	cursor: pointer;
 }
 
-.left-side-panel > ul > li:hover {
+.left-side-panel > ul > a > li:hover {
 	background: #1d1b1b26;
 }
 
-.left-side-panel > ul .active {
+.left-side-panel > ul > a .active {
 	background: #007bff78;
 }
 
-.left-side-panel > ul .active:hover {
+.active {
+	background: #007bff78;
+}
+
+.left-side-panel > ul > a .active:hover {
 	background: #007bff78;
 }
 

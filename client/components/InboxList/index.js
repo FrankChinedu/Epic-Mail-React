@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 import Template from './template';
 
-const Listmessage = ({ messages }) => {
-  const list = messages.map(message => <Template key={message.id} message={message} />);
+const Listmessage = ({ messages, handleDeleteInbox }) => {
+  const list = messages.map(message => (
+    <Template key={message.id} message={message} handleDeleteInbox={handleDeleteInbox} />
+  ));
 
   return <Fragment>{list}</Fragment>;
 };

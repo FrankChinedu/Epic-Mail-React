@@ -11,32 +11,40 @@ const SideBar = () => {
     <Fragment>
       <div className="col-2 left-aside">
         <div className="space-100 compose-container">
-          <button className="btn compose" onClick={compose}>
+          <button className="btn compose" onClick={compose} style={{ borderRadius: '30px' }}>
 						compose
           </button>
         </div>
         <div className="left-side-panel">
           <ul>
-            <li className="inbox-active listForJs" role="li" id="inbox">
-              <NavLink to="/inbox">
-                <i className="fas fa-inbox mr-5 dark-col" />&nbsp;&nbsp;&nbsp;Inbox
-              </NavLink>
-            </li>
-            <li className=" listForJs" id="draft">
-              <NavLink to="/draft">
-                <i className="fas fa-bookmark mr-5 dark-col" /> &nbsp;&nbsp;&nbsp;Draft
-              </NavLink>
-            </li>
-            <li className="listForJs" id="sent">
-              <NavLink to="/sent">
-                <i className="fas fa-plane-departure mr-5 dark-col" /> &nbsp;Sent
-              </NavLink>
-            </li>
-            <li className=" listForJs" id="contact">
-              <a href="#">
-                <i className="fas fa-address-book mr-5 dark-col" />&nbsp;&nbsp;&nbsp;Contacts
-              </a>
-            </li>
+            <NavLink to="/inbox">
+              <li className="inbox-active listForJs" role="li" id="inbox">
+                <span>
+                  <i className="fas fa-inbox mr-5 dark-col" />&nbsp;&nbsp;&nbsp;Inbox
+                </span>
+              </li>
+            </NavLink>
+            <NavLink to="/draft">
+              <li className=" listForJs" id="draft">
+                <span>
+                  <i className="fas fa-bookmark mr-5 dark-col" /> &nbsp;&nbsp;&nbsp;Draft
+                </span>
+              </li>
+            </NavLink>
+            <NavLink to="/sent">
+              <li className="listForJs" id="sent">
+                <span to="/sent">
+                  <i className="fas fa-plane-departure mr-5 dark-col" /> &nbsp;Sent
+                </span>
+              </li>
+            </NavLink>
+            <a href="#">
+              <li className=" listForJs" id="contact">
+                <span href="#">
+                  <i className="fas fa-address-book mr-5 dark-col" />&nbsp;&nbsp;&nbsp;Contacts
+                </span>
+              </li>
+            </a>
           </ul>
         </div>
       </div>
