@@ -4,6 +4,7 @@ import AuthWrapper from './AuthWrapper';
 import useSetUser from '../store/hooks';
 import store from '../store';
 
+
 export default function Main() {
   useSetUser({ ...store });
   return (
