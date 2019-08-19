@@ -34,4 +34,8 @@ export const formatDate = (time) => {
   return t;
 };
 
+export const clearLocalStorage = () => {
+  localStorage.clear();
+};
+
 export default saveToLocalStorage;

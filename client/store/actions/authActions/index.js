@@ -1,4 +1,4 @@
-import saveToLocalStorage, { axiosCall } from '../../../utils';
+import saveToLocalStorage, { axiosCall, clearLocalStorage } from '../../../utils';
 import callToast from '../../../components/Toast';
 
 export const signUpAction = (values, history) => async (dispatch) => {
@@ -111,4 +111,10 @@ export const getUser = () => (dispatch) => {
     };
     dispatch(setUpUser(payload));
   }
+};
+
+export const handleLogoutAction = history => (dispatch) => {
+  clearLocalStorage();
+  dispatch(getUser());
+  history.push('/');
 };

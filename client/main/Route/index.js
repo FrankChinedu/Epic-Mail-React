@@ -15,6 +15,7 @@ import ResetPassword from '../../pages/resetPassword';
 import GuestRoute from '../GuestRoute';
 import PrivateRoute from '../PrivateRoute';
 import MainBody from '../../components/mainbody';
+import InboxMessage from '../../pages/inbox/message';
 
 const sidebarURL = ['/inbox', '/draft', '/sent'];
 
@@ -22,9 +23,9 @@ const sidebarURL = ['/inbox', '/draft', '/sent'];
 const App = ({ history }) => (
   /* istanbul ignore next */
   <React.Fragment>
-    {['/signup', '/signin', '/forgot-password', '/reset-password', ...sidebarURL].includes(
+    {(['/signup', '/signin', '/forgot-password', '/reset-password', ...sidebarURL].includes(
       history.location.pathname
-    ) && <Navbar history={history} />}
+    ) || history.location.pathname.match(/inbox-message/)) && <Navbar history={history} />}
     <Switch>
       <Route exact path="/" component={Home} />
       <GuestRoute path="/signup" component={Signup} />
@@ -32,8 +33,11 @@ const App = ({ history }) => (
       <GuestRoute path="/forgot-password" component={ForgotPassword} />
       <GuestRoute path="/reset-password" component={ResetPassword} />
       <MainBody>
-        {sidebarURL.includes(history.location.pathname) && <Sidebar history={history} />}
+        {(sidebarURL.includes(history.location.pathname) ||
+        history.location.pathname.match(/inbox-message/))
+        && <Sidebar history={history} />}
         <PrivateRoute path="/inbox" component={Inbox} />
+        <PrivateRoute exact path="/inbox-message/:id" component={InboxMessage} />
         <PrivateRoute path="/draft" component={Draft} />
         <PrivateRoute path="/sent" component={Sent} />
       </MainBody>
