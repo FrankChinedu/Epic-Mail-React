@@ -11,7 +11,7 @@ export const signUpAction = (values, history) => async (dispatch) => {
       payload: payLoad,
       method: 'post'
     });
-    const user = result.data.data;
+    const user = result.data;
     saveToLocalStorage(user);
     dispatch({
       type: 'SIGNUP_SUCCESS',
