@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleLogoutAction } from '../../store/actions/authActions';
 
@@ -96,4 +96,4 @@ export const NavbarComponent = Navbar;
 
 export const handleLogOut = history => handleLogoutAction(history);
 
-export default connect(mapStateToProps, { handleLogOut })(Navbar);
+export default connect(mapStateToProps, { handleLogOut })(withRouter(Navbar));
