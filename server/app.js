@@ -6,8 +6,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import Webpack from 'webpack';
-import WebpackDevMiddleware from 'webpack-dev-middleware';
-import WebpackHotMiddleware from 'webpack-hot-middleware';
+// import WebpackDevMiddleware from 'webpack-dev-middleware';
+// import WebpackHotMiddleware from 'webpack-hot-middleware';
 import YAML from 'yamljs';
 import path from 'path';
 import webpackConfig from '../webpack.config';
@@ -23,7 +23,8 @@ if (process.env.NODE_ENV !== 'test') {
 if (process.env.NODE_ENV === 'development') {
   /* istanbul ignore next */
   const compiler = Webpack(webpackConfig);
-
+  // eslint-disable-next-line global-require
+  const WebpackDevMiddleware = require('webpack-dev-middleware');
   /* istanbul ignore next */
   app.use(
     WebpackDevMiddleware(compiler, {
@@ -31,6 +32,8 @@ if (process.env.NODE_ENV === 'development') {
       publicPath: webpackConfig.output.publicPath
     })
   );
+  // eslint-disable-next-line global-require
+  const WebpackHotMiddleware = require('webpack-hot-middleware');
   /* istanbul ignore next */
   app.use(WebpackHotMiddleware(compiler));
 }
