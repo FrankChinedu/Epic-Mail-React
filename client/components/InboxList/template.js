@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils';
 
 const Template = ({ message, handleDeleteInbox }) => {
